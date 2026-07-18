@@ -69,6 +69,14 @@ describe("Experience", () => {
 });
 
 describe("Contact", () => {
+  it("renders QR codes for this site and for linkedin", async () => {
+    render(<Contact />);
+    const siteQr = await screen.findByAltText("QR code to this site");
+    const linkedinQr = await screen.findByAltText("QR code to linkedin");
+    expect(siteQr).toBeInTheDocument();
+    expect(linkedinQr).toBeInTheDocument();
+  });
+
   it("renders all 4 links with safe rel and correct hrefs", () => {
     const { container } = render(<Contact />);
     for (const c of contact) {

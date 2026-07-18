@@ -1,5 +1,6 @@
-import { contact, identity } from "../data/content.js";
+import { contact, identity, siteUrl } from "../data/content.js";
 import Section from "./ui/Section.jsx";
+import QrCode from "./ui/QrCode.jsx";
 
 export default function Contact() {
   return (
@@ -25,7 +26,15 @@ export default function Contact() {
           );
         })}
       </ul>
-      <p className="mt-16 font-mono text-xs text-muted">
+      <div className="mt-14 flex flex-wrap gap-10 border-t border-line pt-10">
+        <QrCode value={siteUrl} label="this site" />
+        <QrCode
+          value={contact.find((c) => c.service === "linkedin").href}
+          label="linkedin"
+        />
+      </div>
+
+      <p className="mt-10 font-mono text-xs text-muted">
         © {new Date().getFullYear()} {identity.name} · built with react, coffee, and thin air
       </p>
     </Section>

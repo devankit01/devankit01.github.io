@@ -68,6 +68,8 @@ export const about = {
   ],
 };
 
+export const siteUrl = "https://devankit01.github.io/";
+
 export const journeys = {
   instagram: "https://www.instagram.com/ankit.codes/",
   handle: "@ankit.codes",
