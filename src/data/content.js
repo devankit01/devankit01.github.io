@@ -133,6 +133,6 @@ export const experience = [
 export const contact = [
   { service: "email", label: "devankitgupta01@gmail.com", href: "mailto:devankitgupta01@gmail.com" },
   { service: "linkedin", label: "in/ankit-gupta", href: "https://www.linkedin.com/in/ankit-gupta4b4848196" },
-  { service: "github", label: "github.com/ankitgupta", href: "https://github.com/devankitgupta01" },
+  { service: "github", label: "github.com/devankit01", href: "https://github.com/devankit01" },
   { service: "instagram", label: "@ankit.codes", href: "https://www.instagram.com/ankit.codes/" },
 ];
