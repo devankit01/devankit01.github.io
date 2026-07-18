@@ -17,17 +17,16 @@ describe("content", () => {
     }
   });
 
-  it("has 5 hiking trails with date, spot, country, image, and xp", () => {
+  it("has 5 hiking trails with date, spot, country, and xp", () => {
     expect(trails).toHaveLength(5);
     for (const t of trails) {
-      expect(t.src).toMatch(/^insta\/.+\.jpg$/);
       expect(t.date).toBeTruthy();
       expect(t.spot).toBeTruthy();
       expect(t.country).toBeTruthy();
       expect(t.flag).toBeTruthy();
       expect(t.xp).toBeGreaterThan(0);
     }
-    expect(trails.map((t) => t.src)).toContain("insta/chandrashila-peak.jpg");
+    expect(trails.map((t) => t.spot)).toContain("Chandrashila Peak · 12,083 ft");
   });
 
   it("has 3 projects with name, desc, stack", () => {

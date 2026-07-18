@@ -2,10 +2,9 @@
 
 // Gamified hiking timeline, newest first. Dates are best-guess — edit freely.
 // xp drives the total + hiker level in the Journeys section.
-// All 27 downloaded photos remain in photos.js if you want to feature more.
+// All 27 downloaded photos remain in assets-archive/ (not shipped).
 export const trails = [
   {
-    src: "insta/austria.jpg",
     date: "2026",
     spot: "Austrian Alps",
     country: "Austria",
@@ -13,7 +12,6 @@ export const trails = [
     xp: 850,
   },
   {
-    src: "insta/12000-ft.jpg",
     date: "2025",
     spot: "Tungnath ridge · 12,000 ft",
     country: "India",
@@ -22,7 +20,6 @@ export const trails = [
     badge: "altitude junkie",
   },
   {
-    src: "insta/chandrashila-peak.jpg",
     date: "2025",
     spot: "Chandrashila Peak · 12,083 ft",
     country: "India",
@@ -31,7 +28,6 @@ export const trails = [
     badge: "summit unlocked",
   },
   {
-    src: "insta/oslo-norway.jpg",
     date: "2025",
     spot: "Mørkgonga, Oslo",
     country: "Norway",
@@ -39,7 +35,6 @@ export const trails = [
     xp: 700,
   },
   {
-    src: "insta/mullerthal-hiking.jpg",
     date: "2025",
     spot: "Mullerthal Trail",
     country: "Luxembourg",

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { trails, journeys } from "../data/content.js";
 import Section from "./ui/Section.jsx";
 
@@ -29,30 +28,16 @@ function LevelBar({ totalXp }) {
 }
 
 function Waypoint({ trail }) {
-  const [broken, setBroken] = useState(false);
   return (
-    <li className="relative flex items-center gap-5">
-      <span className="absolute -left-[31px] top-1/2 size-2.5 -translate-y-1/2 rounded-full border-2 border-green bg-bg sm:-left-[39px]" />
-      {broken ? (
-        <div className="flex size-16 shrink-0 items-center justify-center rounded-full border-2 border-line bg-panel sm:size-20">
-          <span className="font-mono text-xl text-green">⛰</span>
-        </div>
-      ) : (
-        <img
-          src={`${import.meta.env.BASE_URL}${trail.src}`}
-          alt={`${trail.spot}, ${trail.country}`}
-          loading="lazy"
-          onError={() => setBroken(true)}
-          className="duotone size-16 shrink-0 rounded-full border-2 border-line object-cover sm:size-20"
-        />
-      )}
+    <li className="relative">
+      <span className="absolute -left-[31px] top-1.5 size-2.5 rounded-full border-2 border-green bg-bg sm:-left-[39px]" />
       <div className="min-w-0 font-mono text-sm">
         <p className="text-xs text-muted">{trail.date}</p>
         <p className="mt-0.5 font-bold text-ink">{trail.spot}</p>
         <p className="mt-0.5 text-muted">
           {trail.flag} {trail.country}
         </p>
-        <p className="mt-1">
+        <p className="mt-1.5">
           <span className="rounded-full border border-green/40 px-2 py-0.5 text-xs text-green">
             +{trail.xp} XP
           </span>
@@ -70,12 +55,12 @@ export default function Journeys() {
   return (
     <Section id="journeys" title="journeys">
       <p className="mb-6 font-mono text-sm text-muted">
-        $ cat ~/trails.log <span className="text-green"># hover a photo for full color</span>
+        $ cat ~/trails.log <span className="text-green"># every summit grants xp</span>
       </p>
       <LevelBar totalXp={totalXp} />
       <ol className="space-y-10 border-l border-line pl-6 sm:pl-8">
         {trails.map((t) => (
-          <Waypoint key={t.src} trail={t} />
+          <Waypoint key={t.spot} trail={t} />
         ))}
       </ol>
       <p className="mt-10 font-mono text-sm">

@@ -19,14 +19,12 @@ describe("About", () => {
 });
 
 describe("Journeys", () => {
-  it("renders a gamified timeline entry per trail: circular image, date, spot, country, xp", () => {
+  it("renders a gamified timeline entry per trail: date, spot, country, xp — no images", () => {
     const { container } = render(<Journeys />);
     const entries = container.querySelectorAll("ol > li");
     expect(entries).toHaveLength(trails.length);
+    expect(container.querySelector("img")).toBeNull();
     entries.forEach((li, i) => {
-      const img = li.querySelector("img");
-      expect(img).toBeTruthy();
-      expect(img.className).toContain("rounded-full");
       expect(li.textContent).toContain(trails[i].date);
       expect(li.textContent).toContain(trails[i].spot);
       expect(li.textContent).toContain(trails[i].country);
