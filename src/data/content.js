@@ -52,7 +52,7 @@ export const identity = {
   name: "Ankit Gupta",
   prompt: "$ whoami",
   taglines: ["backend engineer.", "mountain person."],
-  chips: ["python", "llms", "fastapi", "health-ai", "amsterdam", "12000 ft"],
+  chips: ["python", "llms", "ai-agents", "fastapi", "amsterdam", "12000 ft"],
   nav: [
     { label: "about", href: "#about" },
     { label: "trails", href: "#journeys" },
@@ -64,7 +64,7 @@ export const identity = {
 
 export const about = {
   story:
-    "I build backend systems for health-AI at Clear.bio in Amsterdam — clinical data pipelines, medical LLM extraction running entirely inside hospital firewalls, and integrations that move patient records across borders without ever leaking a byte. Python is my first language; regulated, can't-fail environments are my comfort zone. When I'm not shipping, I'm outside: hiking Himalayan and European trails, chasing festivals across Spain, or biking somewhere flat because the Netherlands offers nothing taller.",
+    "I build AI-powered backend systems at Clear.bio in Amsterdam — production data pipelines, LLM extraction running fully on-premise behind strict firewalls, and cross-border integrations that move sensitive records without ever leaking a byte. Python is my first language; regulated, can't-fail environments are my comfort zone. When I'm not shipping, I'm outside: hiking Himalayan and European trails, chasing festivals across Spain, or biking somewhere flat because the Netherlands offers nothing taller.",
   stats: [
     { flag: "--countries", value: "15+ visited" },
     { flag: "--highest-trek", value: "12,000 ft · Chandrashila" },
@@ -86,8 +86,8 @@ export const projects = [
     link: null,
   },
   {
-    name: "clinical-llm-pipeline",
-    desc: "Fully on-premise medical text extraction at Clear.bio — llama3.1 and meditron via Ollama inside hospital infrastructure. Zero patient data leaves the clinical firewall. CE-marked, GDPR-compliant.",
+    name: "llm-extraction-pipeline",
+    desc: "Fully on-premise LLM text-extraction pipeline at Clear.bio — llama3.1 and meditron via Ollama on private infrastructure. Zero sensitive data leaves the network. CE-marked, GDPR-compliant product.",
     stack: ["python", "ollama", "fastapi", "docker"],
     link: null,
   },
@@ -107,8 +107,8 @@ export const experience = [
     place: "Amsterdam",
     period: "2022 — now",
     points: [
-      "Own patient-facing backend services end-to-end: clinical pipelines, medical NLP, EHR integrations.",
-      "Kenya health-system integrations (PharmAccess, CarePay) across a cross-border regulated environment.",
+      "Own production backend services end-to-end: data pipelines, NLP/LLM extraction, partner API integrations.",
+      "Cross-border partner integrations (PharmAccess, CarePay) in a heavily regulated environment.",
     ],
   },
   {

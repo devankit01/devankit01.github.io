@@ -50,6 +50,13 @@ describe("content", () => {
     }
   });
 
+  it("never mentions 'health' anywhere (avoid recruiter pigeonholing)", () => {
+    const everything = JSON.stringify({ identity, about, projects, experience });
+    expect(everything.toLowerCase()).not.toContain("health");
+    expect(everything.toLowerCase()).not.toContain("medical");
+    expect(everything.toLowerCase()).not.toContain("clinical");
+  });
+
   it("has 4 contact links with valid hrefs", () => {
     expect(contact).toHaveLength(4);
     const services = contact.map((c) => c.service);
