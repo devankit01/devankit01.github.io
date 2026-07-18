@@ -1,7 +1,7 @@
 // All site content lives here. Edit this file — never the components.
 import { photos as allPhotos } from "./photos.js";
 
-// Curated Journeys grid: peaks, hikes, and signature events only.
+// Curated Journeys grid: hiking only.
 // Add/remove slugs here — every downloaded photo stays in photos.js.
 const FEATURED = [
   "chandrashila-peak",
@@ -9,10 +9,6 @@ const FEATURED = [
   "oslo-norway",
   "mullerthal-hiking",
   "austria",
-  "la-tomatina-bunol",
-  "holi-2026",
-  "kings-day-2026",
-  "google-cloud-summit",
 ];
 
 export const photos = FEATURED.map((slug) =>

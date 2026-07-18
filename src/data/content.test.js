@@ -17,13 +17,13 @@ describe("content", () => {
     }
   });
 
-  it("has a curated set of 9 peak/event photos with cleaned captions", () => {
-    expect(photos).toHaveLength(9);
+  it("has a curated set of 5 hiking photos with cleaned captions", () => {
+    expect(photos).toHaveLength(5);
     const srcs = photos.map((p) => p.src);
     expect(srcs).toContain("insta/chandrashila-peak.jpg");
     expect(srcs).toContain("insta/12000-ft.jpg");
-    expect(srcs).toContain("insta/la-tomatina-bunol.jpg");
-    expect(srcs).not.toContain("insta/snooker-leidseplein.jpg");
+    expect(srcs).not.toContain("insta/la-tomatina-bunol.jpg");
+    expect(srcs).not.toContain("insta/google-cloud-summit.jpg");
     for (const p of photos) {
       expect(p.src).toMatch(/^insta\/.+\.jpg$/);
       expect(typeof p.caption).toBe("string");
