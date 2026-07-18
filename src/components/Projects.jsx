@@ -5,7 +5,7 @@ import TerminalCard from "./ui/TerminalCard.jsx";
 export default function Projects() {
   return (
     <Section id="projects" title="projects">
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2">
         {projects.map((p) => (
           <TerminalCard key={p.name} title={`~/projects/${p.name}`}>
             <p className="min-h-28 text-sm leading-relaxed text-ink/90">{p.desc}</p>

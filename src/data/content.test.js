@@ -29,8 +29,9 @@ describe("content", () => {
     expect(trails.map((t) => t.spot)).toContain("Chandrashila Peak · 12,083 ft");
   });
 
-  it("has 3 projects with name, desc, stack", () => {
-    expect(projects).toHaveLength(3);
+  it("has 2 projects with name, desc, stack — no hireup", () => {
+    expect(projects).toHaveLength(2);
+    expect(projects.map((p) => p.name)).not.toContain("hireup");
     for (const p of projects) {
       expect(p.name).toBeTruthy();
       expect(p.desc).toBeTruthy();

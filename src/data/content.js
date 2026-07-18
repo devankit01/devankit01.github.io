@@ -86,12 +86,6 @@ export const projects = [
     stack: ["python", "ollama", "fastapi", "docker"],
     link: null,
   },
-  {
-    name: "hireup",
-    desc: "End-to-end recruitment SaaS — profile management, job listings, and application tracking. Full ownership from design through deployment.",
-    stack: ["python", "react", "postgresql"],
-    link: null,
-  },
 ];
 
 export const experience = [
