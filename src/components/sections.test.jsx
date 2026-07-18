@@ -19,9 +19,17 @@ describe("About", () => {
 });
 
 describe("Journeys", () => {
-  it("renders one figure per photo and links to instagram", () => {
+  it("renders a timeline entry with a small image per photo", () => {
     const { container } = render(<Journeys />);
-    expect(container.querySelectorAll("figure")).toHaveLength(photos.length);
+    const entries = container.querySelectorAll("ol > li");
+    expect(entries).toHaveLength(photos.length);
+    for (const li of entries) {
+      expect(li.querySelector("img")).toBeTruthy();
+    }
+  });
+
+  it("links to instagram", () => {
+    const { container } = render(<Journeys />);
     const ig = container.querySelector("a[href*='instagram.com/ankit.codes']");
     expect(ig).toBeInTheDocument();
   });
