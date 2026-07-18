@@ -87,9 +87,9 @@ export const projects = [
     link: null,
   },
   {
-    name: "partner-data-sync",
-    desc: "Resilient cross-border data-sync pipelines connecting PharmAccess and CarePay in Kenya — insurance claims and records flowing across versioned partner APIs, with schema-mismatch handling and compliance requirements on both ends.",
-    stack: ["python", "rest-apis", "azure"],
+    name: "pii-scanner",
+    desc: "Open-source library that scans text and structured records for personally identifiable information — configurable detectors, low false-positive rate, built for pipelines that need a fast pre-LLM redaction pass.",
+    stack: ["python", "regex", "spacy", "open-source"],
     link: null,
   },
   {
