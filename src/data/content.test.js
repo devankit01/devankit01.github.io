@@ -29,8 +29,8 @@ describe("content", () => {
     expect(trails.map((t) => t.spot)).toContain("Chandrashila Peak · 12,083 ft");
   });
 
-  it("has 2 projects with name, desc, stack — no hireup", () => {
-    expect(projects).toHaveLength(2);
+  it("has 4 projects with name, desc, stack — no hireup", () => {
+    expect(projects).toHaveLength(4);
     expect(projects.map((p) => p.name)).not.toContain("hireup");
     for (const p of projects) {
       expect(p.name).toBeTruthy();
@@ -48,6 +48,8 @@ describe("content", () => {
       expect(e.period).toBeTruthy();
       expect(e.points.length).toBeGreaterThanOrEqual(1);
     }
+    expect(experience[0].points.length).toBeGreaterThanOrEqual(4);
+    expect(experience[1].points.length).toBeGreaterThanOrEqual(2);
   });
 
   it("never mentions 'health' anywhere (avoid recruiter pigeonholing)", () => {

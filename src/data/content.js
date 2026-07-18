@@ -86,6 +86,18 @@ export const projects = [
     stack: ["python", "ollama", "fastapi", "docker"],
     link: null,
   },
+  {
+    name: "partner-data-sync",
+    desc: "Resilient cross-border data-sync pipelines connecting PharmAccess and CarePay in Kenya — insurance claims and records flowing across versioned partner APIs, with schema-mismatch handling and compliance requirements on both ends.",
+    stack: ["python", "rest-apis", "azure"],
+    link: null,
+  },
+  {
+    name: "llm-benchmark-suite",
+    desc: "Benchmarked domain-tuned vs general LLMs (meditron:7b vs llama3.1:8b) on structured text-extraction tasks — accuracy, latency, and cost tradeoffs that drove the production model choice.",
+    stack: ["python", "ollama", "huggingface"],
+    link: null,
+  },
 ];
 
 export const experience = [
@@ -97,7 +109,10 @@ export const experience = [
     period: "2022 — now",
     points: [
       "Own production backend services end-to-end: data pipelines, NLP/LLM extraction, partner API integrations.",
+      "Architected on-premise LLM deployment (llama3.1, meditron via Ollama) — zero data leaves the network, GDPR-compliant.",
       "Cross-border partner integrations (PharmAccess, CarePay) in a heavily regulated environment.",
+      "CI/CD pipelines and Ansible playbooks for hybrid Azure + on-premise deploys — zero-downtime rollouts in live production.",
+      "Work daily with data scientists, domain experts, and product — turning fuzzy requirements into reliable, testable services.",
     ],
   },
   {
@@ -107,7 +122,8 @@ export const experience = [
     place: "Noida",
     period: "2022",
     points: [
-      "Backend services, automated data workflows, and REST APIs; deployment practices adopted team-wide.",
+      "Built and optimised Python backend services, automated data workflows, and REST APIs — cut manual processing time and raised operational throughput.",
+      "Managed production deployments and improved release reliability; deployment practices adopted by the broader team.",
     ],
   },
   {
