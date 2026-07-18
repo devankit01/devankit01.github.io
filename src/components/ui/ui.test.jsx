@@ -1,9 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import Section from "./Section.jsx";
 import TerminalCard from "./TerminalCard.jsx";
 import RidgelineDivider from "./RidgelineDivider.jsx";
-import DuotonePhoto from "./DuotonePhoto.jsx";
 
 describe("Section", () => {
   it("renders a section element with id and prompt-prefixed heading", () => {
@@ -34,19 +33,3 @@ describe("RidgelineDivider", () => {
   });
 });
 
-describe("DuotonePhoto", () => {
-  it("renders an image with its caption", () => {
-    render(<DuotonePhoto src="insta/oslo.jpg" caption="📍Oslo, Norway" />);
-    const img = screen.getByRole("img");
-    expect(img).toHaveAttribute("src", expect.stringContaining("insta/oslo.jpg"));
-    expect(screen.getByText(/Oslo, Norway/)).toBeInTheDocument();
-  });
-
-  it("falls back to a placeholder when the image errors", () => {
-    render(<DuotonePhoto src="insta/broken.jpg" caption="📍Nowhere" />);
-    fireEvent.error(screen.getByRole("img"));
-    expect(screen.queryByRole("img")).not.toBeInTheDocument();
-    expect(screen.getByTestId("photo-fallback")).toBeInTheDocument();
-    expect(screen.getByText(/Nowhere/)).toBeInTheDocument();
-  });
-});

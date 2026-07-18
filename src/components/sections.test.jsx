@@ -5,7 +5,7 @@ import Journeys from "./Journeys.jsx";
 import Projects from "./Projects.jsx";
 import Experience from "./Experience.jsx";
 import Contact from "./Contact.jsx";
-import { photos, projects, experience, contact } from "../data/content.js";
+import { trails, projects, experience, contact } from "../data/content.js";
 
 describe("About", () => {
   it("renders the story and all 4 stat flags", () => {
@@ -19,13 +19,26 @@ describe("About", () => {
 });
 
 describe("Journeys", () => {
-  it("renders a timeline entry with a small image per photo", () => {
+  it("renders a gamified timeline entry per trail: circular image, date, spot, country, xp", () => {
     const { container } = render(<Journeys />);
     const entries = container.querySelectorAll("ol > li");
-    expect(entries).toHaveLength(photos.length);
-    for (const li of entries) {
-      expect(li.querySelector("img")).toBeTruthy();
-    }
+    expect(entries).toHaveLength(trails.length);
+    entries.forEach((li, i) => {
+      const img = li.querySelector("img");
+      expect(img).toBeTruthy();
+      expect(img.className).toContain("rounded-full");
+      expect(li.textContent).toContain(trails[i].date);
+      expect(li.textContent).toContain(trails[i].spot);
+      expect(li.textContent).toContain(trails[i].country);
+      expect(li.textContent).toContain(`+${trails[i].xp} XP`);
+    });
+  });
+
+  it("shows total XP and hiker level", () => {
+    render(<Journeys />);
+    const total = trails.reduce((s, t) => s + t.xp, 0);
+    expect(screen.getByText(new RegExp(`${total} XP`))).toBeInTheDocument();
+    expect(screen.getAllByText(/LVL \d+/).length).toBeGreaterThanOrEqual(1);
   });
 
   it("links to instagram", () => {

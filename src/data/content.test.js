@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { identity, about, photos, projects, experience, contact } from "./content.js";
+import { identity, about, trails, projects, experience, contact } from "./content.js";
 
 describe("content", () => {
   it("has identity with name, tagline parts, and chips", () => {
@@ -17,18 +17,17 @@ describe("content", () => {
     }
   });
 
-  it("has a curated set of 5 hiking photos with cleaned captions", () => {
-    expect(photos).toHaveLength(5);
-    const srcs = photos.map((p) => p.src);
-    expect(srcs).toContain("insta/chandrashila-peak.jpg");
-    expect(srcs).toContain("insta/12000-ft.jpg");
-    expect(srcs).not.toContain("insta/la-tomatina-bunol.jpg");
-    expect(srcs).not.toContain("insta/google-cloud-summit.jpg");
-    for (const p of photos) {
-      expect(p.src).toMatch(/^insta\/.+\.jpg$/);
-      expect(typeof p.caption).toBe("string");
-      expect(p.caption).not.toMatch(/#\w+/); // hashtags stripped
+  it("has 5 hiking trails with date, spot, country, image, and xp", () => {
+    expect(trails).toHaveLength(5);
+    for (const t of trails) {
+      expect(t.src).toMatch(/^insta\/.+\.jpg$/);
+      expect(t.date).toBeTruthy();
+      expect(t.spot).toBeTruthy();
+      expect(t.country).toBeTruthy();
+      expect(t.flag).toBeTruthy();
+      expect(t.xp).toBeGreaterThan(0);
     }
+    expect(trails.map((t) => t.src)).toContain("insta/chandrashila-peak.jpg");
   });
 
   it("has 3 projects with name, desc, stack", () => {

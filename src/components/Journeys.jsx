@@ -1,32 +1,64 @@
 import { useState } from "react";
-import { photos, journeys } from "../data/content.js";
+import { trails, journeys } from "../data/content.js";
 import Section from "./ui/Section.jsx";
 
-function Waypoint({ src, caption }) {
+const XP_PER_LEVEL = 1000;
+
+function LevelBar({ totalXp }) {
+  const level = Math.floor(totalXp / XP_PER_LEVEL) + 1;
+  const progress = (totalXp % XP_PER_LEVEL) / XP_PER_LEVEL;
+  const filled = Math.round(progress * 20);
+  return (
+    <div className="mb-10 font-mono text-sm">
+      <p>
+        <span className="text-orange">LVL {level}</span>
+        <span className="text-muted"> hiker · </span>
+        <span className="text-green">{totalXp} XP</span>
+      </p>
+      <p aria-hidden="true" className="mt-1 tracking-tighter">
+        <span className="text-muted">[</span>
+        <span className="text-green">{"█".repeat(filled)}</span>
+        <span className="text-line">{"░".repeat(20 - filled)}</span>
+        <span className="text-muted">]</span>
+        <span className="ml-2 text-muted">
+          {totalXp % XP_PER_LEVEL}/{XP_PER_LEVEL} to LVL {level + 1}
+        </span>
+      </p>
+    </div>
+  );
+}
+
+function Waypoint({ trail }) {
   const [broken, setBroken] = useState(false);
   return (
     <li className="relative flex items-center gap-5">
       <span className="absolute -left-[31px] top-1/2 size-2.5 -translate-y-1/2 rounded-full border-2 border-green bg-bg sm:-left-[39px]" />
       {broken ? (
-        <div
-          data-testid="photo-fallback"
-          className="flex size-20 shrink-0 items-center justify-center rounded-lg border border-line bg-panel sm:size-24"
-        >
+        <div className="flex size-16 shrink-0 items-center justify-center rounded-full border-2 border-line bg-panel sm:size-20">
           <span className="font-mono text-xl text-green">⛰</span>
         </div>
       ) : (
         <img
-          src={`${import.meta.env.BASE_URL}${src}`}
-          alt={caption || "hike photo"}
+          src={`${import.meta.env.BASE_URL}${trail.src}`}
+          alt={`${trail.spot}, ${trail.country}`}
           loading="lazy"
           onError={() => setBroken(true)}
-          className="duotone size-20 shrink-0 rounded-lg border border-line object-cover sm:size-24"
+          className="duotone size-16 shrink-0 rounded-full border-2 border-line object-cover sm:size-20"
         />
       )}
-      <div className="font-mono text-sm">
-        <p className="text-ink">
-          <span className="text-green"># </span>
-          {caption || "somewhere out there"}
+      <div className="min-w-0 font-mono text-sm">
+        <p className="text-xs text-muted">{trail.date}</p>
+        <p className="mt-0.5 font-bold text-ink">{trail.spot}</p>
+        <p className="mt-0.5 text-muted">
+          {trail.flag} {trail.country}
+        </p>
+        <p className="mt-1">
+          <span className="rounded-full border border-green/40 px-2 py-0.5 text-xs text-green">
+            +{trail.xp} XP
+          </span>
+          {trail.badge && (
+            <span className="ml-2 text-xs text-orange">🏆 {trail.badge}</span>
+          )}
         </p>
       </div>
     </li>
@@ -34,14 +66,16 @@ function Waypoint({ src, caption }) {
 }
 
 export default function Journeys() {
+  const totalXp = trails.reduce((sum, t) => sum + t.xp, 0);
   return (
     <Section id="journeys" title="journeys">
-      <p className="mb-8 font-mono text-sm text-muted">
+      <p className="mb-6 font-mono text-sm text-muted">
         $ cat ~/trails.log <span className="text-green"># hover a photo for full color</span>
       </p>
-      <ol className="space-y-8 border-l border-line pl-6 sm:pl-8">
-        {photos.map((p) => (
-          <Waypoint key={p.src} src={p.src} caption={p.caption} />
+      <LevelBar totalXp={totalXp} />
+      <ol className="space-y-10 border-l border-line pl-6 sm:pl-8">
+        {trails.map((t) => (
+          <Waypoint key={t.src} trail={t} />
         ))}
       </ol>
       <p className="mt-10 font-mono text-sm">
