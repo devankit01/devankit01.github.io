@@ -17,8 +17,13 @@ describe("content", () => {
     }
   });
 
-  it("has 27 photos with insta paths and cleaned captions", () => {
-    expect(photos).toHaveLength(27);
+  it("has a curated set of 9 peak/event photos with cleaned captions", () => {
+    expect(photos).toHaveLength(9);
+    const srcs = photos.map((p) => p.src);
+    expect(srcs).toContain("insta/chandrashila-peak.jpg");
+    expect(srcs).toContain("insta/12000-ft.jpg");
+    expect(srcs).toContain("insta/la-tomatina-bunol.jpg");
+    expect(srcs).not.toContain("insta/snooker-leidseplein.jpg");
     for (const p of photos) {
       expect(p.src).toMatch(/^insta\/.+\.jpg$/);
       expect(typeof p.caption).toBe("string");

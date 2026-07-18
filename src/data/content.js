@@ -1,5 +1,23 @@
 // All site content lives here. Edit this file — never the components.
-export { photos } from "./photos.js";
+import { photos as allPhotos } from "./photos.js";
+
+// Curated Journeys grid: peaks, hikes, and signature events only.
+// Add/remove slugs here — every downloaded photo stays in photos.js.
+const FEATURED = [
+  "chandrashila-peak",
+  "12000-ft",
+  "oslo-norway",
+  "mullerthal-hiking",
+  "austria",
+  "la-tomatina-bunol",
+  "holi-2026",
+  "kings-day-2026",
+  "google-cloud-summit",
+];
+
+export const photos = FEATURED.map((slug) =>
+  allPhotos.find((p) => p.src === `insta/${slug}.jpg`)
+).filter(Boolean);
 
 export const identity = {
   name: "Ankit Gupta",
